@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <script>
+
+    var contCpf = null
+    var contNum = 0
+    var x = 0
+    var conf = 0
+    var cpfConfCad = null
+    var confCad = null
+    var confCadAnimal = null
+    var firstSelect = null
+    var secondSelect = null
+    var thirdSelect = null
+    var login = null
+    var senha = null
+    var confSenha = null
+    var selectMed = null
+    var confirmMed = null
+    var dadoAnimal = null
+    var confPet = null
+    var confData = null
+    var horaData = null
+    var diaData = null
+    var confPre = null
+    var motivoA = null
+    var diagnostico = null
+    var prescricao = null
+
+    var segMar = []
+    var terMar = []
+    var quaMar = []
+    var quiMar = []
+    var sexMar = []
+    var seg = ["9h", "10h", "11h", "14h", "15h", "16h", "17h", "\n"]
+    var ter = ["9h", "10h", "11h", "14h", "15h", "16h", "17h", "\n"]
+    var qua = ["9h", "10h", "11h", "14h", "15h", "16h", "17h", "\n"]
+    var qui = ["9h", "10h", "11h", "14h", "15h", "16h", "17h", "\n"]
+    var sex = ["9h", "10h", "11h", "14h", "15h", "16h", "17h"]
+
+    Produtos = new Object()
+    Produtos.nome = []
+    Produtos.preco = []
+    Produtos.quant = []
+    Produtos.codprod = []
+
+    var nomeProd = null
+    var precoProd = 0
+    var quantProd = 0
+    var codProd = null
+    var prodControl = null
+    var confProdControl = null
+    var totalProd = 0
+
+    relatorio = new Object()
+    relatorio.nomePet = []
+    relatorio.especiePet = []
+    relatorio.nomeDono = []
+    relatorio.motivoA = []
+    relatorio.diagnostico = []
+    relatorio.prescricao = []
+
+
+
+    animalCadastro = new Object()
+    animalCadastro.nome = []
+    animalCadastro.especie = []
+    animalCadastro.peso = []
+    animalCadastro.sexo = []
+    animalCadastro.cor = []
+
+    var nomeAnimal = null
+    var especieAnimal = null
+    var pesoAnimal = null
+    var sexoAnimal = null
+    var corAnimal = null
+
+    var nome = null
+    var idade = "a"
+    var email = null
+    var tel = null
+    var cpf = "a"
+    var cidade = null
+    var cep = "a"
+
+    clienteCadastro = new Object()
+    clienteCadastro.nome = []
+    clienteCadastro.idade = []
+    clienteCadastro.email = []
+    clienteCadastro.tel = []
+    clienteCadastro.cpf = []
+    clienteCadastro.cidade = []
+    clienteCadastro.Cep = []
+    clienteCadastro.nomeAnimal = []
+    clienteCadastro.especieAnimal = []
+    clienteCadastro.pesoAnimal = []
+    clienteCadastro.sexoAnimal = []
+    clienteCadastro.corAnimal = []
+
+
+    Cadastro = new Object()
+    Cadastro.login = []
+    Cadastro.senha = []
+
+
+    while (firstSelect != 1 && firstSelect != 2 && firstSelect != 0) {
+      firstSelect = parseInt(prompt("1 - LOGIN \n2 - REGISTRAR-SE \n0 - SAIR"))
+      if (firstSelect != 1 && firstSelect != 2 && firstSelect != 0) {
+        alert("Informe uma opção válida!")
+      }
+      if (firstSelect == 1) {
+        if (Cadastro.login[0] != null) {
+          conf = 0
+          for (i = 0; i <= Cadastro.login.length; i++) {
+            while (conf == 0) {
+              while (login == null) {
+                login = prompt("LOGIN: ")
+                for (i = 0; i < Cadastro.login.length; i++) {
+                  if (login === Cadastro.login[i]) {
+                    alert("Login já cadastrado!")
+                    login = null
+                  }
+                }
+              }
+              senha = prompt("SENHA: ")
+              conf++
+              if (login != Cadastro.login[i] || senha != Cadastro.senha[i]) {
+                alert("Login e/ou senha incorreto(s)!")
+                conf = 0
+              }
+              if (login === Cadastro.login[i] && senha === Cadastro.senha[i]) {
+                alert("Login efetuado com sucesso")
+                while (thirdSelect != 1 && thirdSelect != 2 && thirdSelect != 0) {
+                  thirdSelect = parseInt(prompt("1 - Cadastro \n2 - Consultas/Relatórios \n3 - Controle de Estoque \n4 - Venda \n0 - SAIR"))
+                  secondSelect = 5
+                  switch (thirdSelect) {
+
+                    case 1:
+                      while (secondSelect != 1 && secondSelect != 2 && secondSelect != 0) {
+                        secondSelect = parseInt(prompt("1 - Cadastrar cliente \n2 - Cadastrar Pet \n0 - SAIR"))
+                        if (secondSelect == 0) {
+                          thirdSelect = 5
+                        }
+                        switch (secondSelect) {
+                          case 1:
+                            idade = "a"
+                            cpf = "a"
+                            cep = "a"
+
+                            nome = prompt("Nome: ")
+
+                            while (idade % 2 != 0 && idade % 2 != 1) {
+                              idade = parseInt(prompt("Idade: "))
+                              if (idade % 2 != 0 && idade % 2 != 1) {
+                                alert("Informe uma idade válida!")
+                                idade = "asd"
+                              }
+                            }
+
+                            while (cpf % 2 != 0 && cpf % 2 != 1) {
+                              cpf = prompt("CPF (Apenas números): ")
+                              if (cpf % 2 != 0 && cpf % 2 != 1) {
+                                alert("Informe um cpf válido")
+                                cpf = "aksd"
+                              }
+                              for (i = 0; i < clienteCadastro.cpf.length; i++) {
+                                if (cpf === clienteCadastro.cpf[i]) {
+                                  alert("CPF já registrado!")
+                                  cpf = "a"
+                                }
+                              }
+                            }
+
+                            while (cep % 2 != 0 && cep % 2 != 1) {
+                              cep = prompt("CEP: ")
+                              if (cep % 2 != 0 && cep % 2 != 1) {
+                                alert("Informe um CEP válido!")
+                                cep = "aasd"
+                              }
+                            }
+
+                            cidade = prompt("Cidade: ")
+                            tel = prompt("Telefone: ")
+                            email = prompt("E-mail: ")
+
+                            confCad = "asd"
+                            while (confCad != "Sim" && confCad != "Não" && confCad != "sim" && confCad != "não") {
+                              confCad = prompt("Nome: " + nome + "\nIdade: " + idade + "\nCPF: " + cpf + "\nCEP: " + cep + "\nCidade: " + cidade + "\nTelefone: " + tel + "\nE-mail: " + email + "\nConfirmar Cadastro? \nSim ou Não?")
+                              if (confCad === "Sim" || confCad === "sim") {
+                                clienteCadastro.nome.push(nome)
+                                clienteCadastro.idade.push(idade)
+                                clienteCadastro.email.push(email)
+                                clienteCadastro.tel.push(tel)
+                                clienteCadastro.cpf.push(cpf)
+                                clienteCadastro.cidade.push(cidade)
+                                clienteCadastro.Cep.push(cep)
+                                alert("Cadastro Realizado!")
+                                thirdSelect = 5
+                              } else if (confCad === "Não" || confCad === "não") {
+                                alert("Cadastro Cancelado!")
+                                thirdSelect = 5
+                              } else {
+                                alert("Informe uma opção válida!")
+                              }
+                            }
+                            break
+
+                          case 2:
+                            contNum = 0
+                            for (o = 0; o <= clienteCadastro.cpf.length; o++) {
+                              if (clienteCadastro.cpf[o] == null) {
+                                nomeAnimal = prompt("Nome: ")
+                                especieAnimal = prompt("Espécie: ")
+                                pesoAnimal = prompt("Peso: ")
+                                sexoAnimal = prompt("Sexo: ")
+                                corAnimal = prompt("Cor: ")
+                              } else if (clienteCadastro.cpf[0] == null) {
+                                alert("Ainda não há clientes cadastrados!")
+                                break
+                              }
+                            }
+                            cpfConfCad = null
+                            while (cpfConfCad === null) {
+                              contCpf = 0
+                              cpfConfCad = prompt("Informe o cpf do dono do animal para cadastrá-lo: ")
+                                  
+                                  for (c = 0; c <= clienteCadastro.cpf.length; c++) {
+                                    if (cpfConfCad === clienteCadastro.cpf[c]) {
+                                      contCpf++
+                                      while (confCadAnimal != "Sim" && confCadAnimal != "Não" && confCadAnimal != "sim" && confCadAnimal != "não" && confCadAnimal != "sair") {
+                                        confCadAnimal = prompt("Dados do Dono \nNome: " + clienteCadastro.nome[c] + "\nIdade: " + clienteCadastro.idade[c] + "\nCPF: " + clienteCadastro.cpf[c] + "\nCEP: " + clienteCadastro.Cep[c] + "\nCidade: " + clienteCadastro.cidade[c] + "\nTelefone: " + clienteCadastro.tel[c] + "\nE-mail: " + clienteCadastro.email[c] + "\n\nDados do Animal \nNome: " + nomeAnimal + "\nEspécie: " + especieAnimal + "\nPeso: " + pesoAnimal + "\nSexo: " + sexoAnimal + "\nCor: " + corAnimal + "\nConfirmar Cadastro? \nSim ou Não?")
+                                      }
+                                    }
+                                  }
+                                  if (confCadAnimal === "Sim" || confCadAnimal === "sim") {
+                                    clienteCadastro.nomeAnimal.push(nomeAnimal)
+                                    clienteCadastro.especieAnimal.push(especieAnimal)
+                                    clienteCadastro.pesoAnimal.push(pesoAnimal)
+                                    clienteCadastro.sexoAnimal.push(sexoAnimal)
+                                    clienteCadastro.corAnimal.push(corAnimal)
+                                    alert("Pet cadastrado com sucesso!")
+                                    secondSelect = 5
+                                    confCadAnimal = "asd"
+                                  } else if (confCadAnimal === "Não" || confCadAnimal === "não") {
+                                    alert("Cadastro cancelado!")
+                                    secondSelect = 5
+                                    confCadAnimal = "asd"
+                                  } if(confCadAnimal != "Sim" && confCadAnimal != "Não" && confCadAnimal != "sim" && confCadAnimal != "não" && confCadAnimal != "sair") {
+                                    alert("Informe uma opção válida!")
+                                    confCadAnimal = "sair"
+                                  }
+                                }
+                              if(contCpf == 0){
+                                alert("CPF não cadastrado!")
+                                cpfConfCad = null
+                              }
+                              
+                            
+                            break
+                        }
+                      }
+                      break
+
+                    case 2:
+                      selectMed = 5
+                      while (selectMed != 1 && selectMed != 2 && selectMed != 0) {
+                        selectMed = parseInt(prompt("Informe o que deseja: \n1 - Marcar uma consulta \n2 - Relatórios \n0 - SAIR"))
+                        if (selectMed == 1) {
+                          if (clienteCadastro.cpf[0] == null) {
+                            alert("Nenhum cliente registrado!")
+                            thirdSelect = 5
+
+                          }
+                          if (clienteCadastro.nomeAnimal[0] == null) {
+                            alert("Nenhum pet cadastrado!")
+
+                            thirdSelect = 5
+                          }
+                          confPet = null
+                          if (clienteCadastro.cpf[0] != null && clienteCadastro.nomeAnimal[0] != null) {
+                            dadoAnimal = prompt("Informe o cpf do dono do Pet: ")
+                          }
+
+                          for (k = 0; k <= clienteCadastro.cpf.length; k++) {
+                            if (dadoAnimal === clienteCadastro.cpf[k]) {
+                              while (confPet != "Sim" && confPet != "Não" && confPet != "sim" && confPet != "não") {
+                                confPet = prompt("Dados do Pet: \nNome: " + clienteCadastro.nomeAnimal[k] + "\nEspécie: " + clienteCadastro.especieAnimal[k] + "\nCor: " + clienteCadastro.corAnimal[k] + "\nConfirma? Sim ou Não?")
+                              }
+                              if (confPet === "Sim" || confPet === "sim") {
+                                diaData = "sair"
+                                alert("Horários disponíveis: \n" + "Segunda-Feira: " + seg + "Terça-Feira: " + ter + "Quarta-Feira: " + qua + "Quinta-Feira: " + qui + "Sexta-Feira: " + sex)
+                                while (diaData != "seg" && diaData != "ter" && diaData != "qua" && diaData != "qui" && diaData != "sex") {
+                                  diaData = prompt("Informe um dia da semana de forma abreviada: ")
+                                  if (diaData != "seg" && diaData != "ter" && diaData != "qua" && diaData != "qui" && diaData != "sex" && diaData != "sair") {
+                                    alert("Informe uma data correta!")
+                                  }
+
+                                  if (diaData === "seg") {
+                                    contNum = 0
+                                    confData = "niet"
+                                    horaData = prompt("Horários disponíveis Segunda-Feira: \n" + seg + "\n0 - SAIR")
+                                    if (horaData === 0) {
+                                      diaData = "sair"
+                                    }
+
+                                    for (i = 0; i <= seg.length; i++) {
+                                      if (horaData === seg[i]) {
+                                        contNum++
+                                        while (confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                          confData = prompt("Confirmar para Segunda-feira às: " + horaData + "?")
+                                          if (confData === "Sim" || confData === "sim") {
+                                            alert("Consulta confirmada!")
+                                            segMar.push(seg.splice(i, 1))
+                                            selectMed = 5
+                                          } else if (confData === "Não" || confData === "não") {
+                                            alert("Consulta Cancelada!")
+                                            diaData = "sair"
+                                          } else if (confData = "niet" && confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                            alert("Informe uma resposta coerente!")
+                                          }
+                                        }
+                                      }
+                                    } if (contNum == 0) {
+                                      alert("Horário indisponível!")
+                                    }
+                                  }
+                                  if (diaData === "ter") {
+                                    contNum = 0
+                                    confData = "niet"
+                                    horaData = prompt("Horários disponíveis Terça-Feira: \n" + ter + "\n0 - SAIR")
+                                    if (horaData === 0) {
+                                      diaData = "sair"
+                                    }
+
+                                    for (i = 0; i <= ter.length; i++) {
+                                      if (horaData === ter[i]) {
+                                        contNum++
+                                        while (confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                          confData = prompt("Confirmar para Terça-feira às: " + horaData + "?")
+                                          if (confData === "Sim" || confData === "sim") {
+                                            alert("Consulta confirmada!")
+                                            terMar.push(ter.splice(i, 1))
+                                            selectMed = 5
+                                          } else if (confData === "Não" || confData === "não") {
+                                            alert("Consulta Cancelada!")
+                                            diaData = "sair"
+                                          } else if (confData = "niet" && confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                            alert("Informe uma resposta coerente!")
+                                          }
+                                        }
+                                      }
+                                    } if (contNum == 0) {
+                                      alert("Horário indisponível!")
+                                    }
+                                  }
+
+                                  if (diaData === "qua") {
+                                    contNum = 0
+                                    confData = "niet"
+                                    horaData = prompt("Horários disponíveis Quarta-Feira: \n" + qua + "\n0 - SAIR")
+                                    if (horaData === 0) {
+                                      diaData = "sair"
+                                    }
+                                    for (i = 0; i <= qua.length; i++) {
+
+                                      if (horaData === qua[i]) {
+                                        contNum++
+                                        while (confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                          confData = prompt("Confirmar para Quarta-feira às: " + horaData + "?")
+                                          if (confData === "Sim" || confData === "sim") {
+                                            alert("Consulta confirmada!")
+                                            quaMar.push(qua.splice(i, 1))
+                                            selectMed = 5
+                                          } else if (confData === "Não" || confData === "não") {
+                                            alert("Consulta Cancelada!")
+                                            diaData = "sair"
+                                          } else if (confData = "niet" && confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                            alert("Informe uma resposta coerente!")
+                                          }
+                                        }
+                                      }
+                                    } if (contNum == 0) {
+                                      alert("Horário indisponível!")
+                                    }
+                                  }
+
+                                  if (diaData === "qui") {
+                                    contNum = 0
+                                    confData = "niet"
+                                    horaData = prompt("Horários disponíveis Quinta-Feira: \n" + qui + "\n0 - SAIR")
+                                    if (horaData === 0) {
+                                      diaData = "sair"
+                                    }
+                                    for (i = 0; i <= qui.length; i++) {
+
+                                      if (horaData === qui[i]) {
+                                        contNum++
+                                        while (confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                          confData = prompt("Confirmar para Quinta-feira às: " + horaData + "?")
+                                          if (confData === "Sim" || confData === "sim") {
+                                            alert("Consulta confirmada!")
+                                            quiMar.push(qui.splice(i, 1))
+                                            selectMed = 5
+                                          } else if (confData === "Não" || confData === "não") {
+                                            alert("Consulta Cancelada!")
+                                            diaData = "sair"
+                                          } else if (confData = "niet" && confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                            alert("Informe uma resposta coerente!")
+                                          }
+                                        }
+                                      }
+                                    } if (contNum == 0) {
+                                      alert("Horário indisponível!")
+                                    }
+                                  }
+
+                                  if (diaData === "sex") {
+                                    contNum = 0
+                                    confData = "niet"
+                                    horaData = prompt("Horários disponíveis Sexta-Feira: \n" + sex + "\n0 - SAIR")
+                                    if (horaData === 0) {
+                                      diaData = "sair"
+                                      contNum++
+
+                                    }
+                                    for (i = 0; i <= sex.length; i++) {
+
+                                      if (horaData === sex[i]) {
+                                        contNum++
+                                        while (confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                          confData = prompt("Confirmar para Sexta-feira às: " + horaData + "?")
+                                          if (confData === "Sim" || confData === "sim") {
+                                            alert("Consulta confirmada!")
+                                            sexMar.push(sex.splice(i, 1))
+                                            selectMed = 5
+                                          } else if (confData === "Não" || confData === "não") {
+                                            alert("Consulta Cancelada!")
+                                            diaData = "sair"
+                                          } else if (confData = "niet" && confData != "Sim" && confData != "Não" && confData != "sim" && confData != "não") {
+                                            alert("Informe uma resposta coerente!")
+                                          }
+                                        }
+                                      }
+                                    } if (contNum == 0) {
+                                      alert("Horário indisponível!")
+                                    }
+                                  }
+
+                                }
+                              }
+                            }
+                          }
+                        }
+
+                        if (selectMed == 2) {
+                          selectRelat = "sair"
+                          while (selectRelat != 0 && selectRelat != 1 && selectRelat != 2) {
+                            selectRelat = parseInt(prompt("1 - Gerar Relatório \n2 - Consultar Relatório \n0 - SAIR"))
+                            if (selectRelat != "sair" && selectRelat != 0 && selectRelat != 1 && selectRelat != 2) {
+                              alert("Informe uma opção correta!")
+                            }
+                            if (selectRelat == 0) {
+                              alert("Processo encerrado!")
+                              thirdSelect = 5
+                            }
+                            if (selectRelat == 1) {
+                              dadoAnimal = null
+                              confPre = "sair"
+                              dadoAnimal = parseInt(prompt("Informe o cpf do dono do Pet \n0 - SAIR: "))
+
+                              if (dadoAnimal == 0) {
+                                selectRelat = "sair"
+                              }
+                              for (i = 0; i < clienteCadastro.cpf.length; i++) {
+                                if (dadoAnimal === clienteCadastro.cpf[i]) {
+                                  while (confPre != "Sim" && confPre != "sim" && confPre != "Não" && confPre != "não") {
+
+                                    motivoA = prompt("Informe o motivo da consulta: ")
+                                    diagnostico = prompt("Informe o diagnóstico")
+                                    prescricao = prompt("Prescrição médica: ")
+
+
+                                    confPre = prompt("Dados:\nNome do Dono: " + clienteCadastro.nome[i] + "\nNome do Pet: " + clienteCadastro.nomeAnimal[i] + "\nEspécie: " + clienteCadastro.especieAnimal[i] + "\nMotivo da consulta: " + motivoA + "\nDiagnóstico: " + diagnostico + "\nPrescrição médica: " + prescricao + "\nConfirmar?")
+
+
+                                  } if (confPre === "Sim" || confPre === "sim") {
+                                    relatorio.nomePet[i] = clienteCadastro.nomeAnimal[i]
+                                    relatorio.especiePet[i] = clienteCadastro.especieAnimal[i]
+                                    relatorio.nomeDono[i] = clienteCadastro.nome[i]
+                                    relatorio.motivoA[i] = motivoA
+                                    relatorio.diagnostico[i] = diagnostico
+                                    relatorio.prescricao[i] = prescricao
+                                    selectRelat = "sair"
+                                  } if (confPre === "Não" || confPre === "não") {
+                                    alert("Cancelando Relatório")
+                                    selectRelat = "sair"
+                                  } if (confPre != "Sim" && confPre != "sim" && confPre != "Não" && confPre != "não") {
+                                    alert("Seleção inválida!")
+                                  }
+                                }
+                              }
+                            }
+                            if (selectRelat == 2) {
+                              contNum = 0
+                              dadoAnimal = parseInt(prompt("Informe o cpf do dono do Pet que deseja consultar o relatório: "))
+                              for (i = 0; i <= clienteCadastro.cpf.length; i++) {
+                                if (dadoAnimal == clienteCadastro.cpf[i]) {
+                                  contNum++
+                                  alert("Dados:\nNome do Dono: " + clienteCadastro.nome[i] + "\nNome do Pet: " + clienteCadastro.nomeAnimal[i] + "\nEspécie: " + clienteCadastro.especieAnimal[i] + "\Motivo da consulta: " + relatorio.motivoA[i] + "\nDiagnóstico: " + relatorio.diagnostico[i] + "\nPrescrição médica: " + relatorio.prescricao[i])
+                                  selectRelat = "sair"
+                                }
+                              } if (contNum == 0) {
+                                alert("Cliente não cadastrado!")
+
+                              }
+                            }
+                          }
+                        }
+                      }
+                      break
+                    case 3:
+                      prodControl = "sair"
+                      while (prodControl != 1 && prodControl != 2 && prodControl != 3 && prodControl != 4 && prodControl != 5 && prodControl != 0) {
+                        prodControl = parseInt(prompt("Informe a opção desejada: \n1 - Cadastrar Produtos \n2 - Retirar Produtos \n3 - Consultar Produto \n4 - Adicionar Produtos \n5 - Subtrair Produtos \n0 - SAIR"))
+                      }
+                      if (prodControl == 0) {
+                        alert("Cancelado!")
+                        thirdSelect = 5
+                      }
+                      if (prodControl != "sair" && prodControl != 1 && prodControl != 2 && prodControl != 3 && prodControl != 4 && prodControl != 5 && prodControl != 0) {
+                        alert("Informe uma opção válida!")
+                      }
+                      switch (prodControl) {
+                        case 1:
+                          codProd = null
+                          confProdControl = "sair"
+                          nomeProd = prompt("Informe o nome do produto:")
+                          precoProd = parseFloat(prompt("Qual o valor do produto?"))
+                          quantProd = parseFloat(prompt("Quantos há em estoque?"))
+
+                          while (codProd == null) {
+                            codProd = parseInt(prompt("Determine um código numérico para o produto:"))
+                            for (i = 0; i < Produtos.codprod.length; i++) {
+                              if (codProd == Produtos.codprod[i]) {
+                                alert("Código já registrado!")
+                                codProd = null
+                              }
+                            }
+                          }
+
+
+                          while (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                            confProdControl = prompt("Nome: " + nomeProd + "\nPreço: " + precoProd + "\nQuantia em estoque: " + quantProd + "\nCódigo do produto: " + codProd + "\nConfirma?")
+                          }
+                          if (confProdControl === "Sim" || confProdControl === "sim") {
+                            Produtos.nome.push(nomeProd)
+                            Produtos.preco.push(precoProd)
+                            Produtos.quant.push(quantProd)
+                            Produtos.codprod.push(codProd)
+                            alert("Produto cadastrado com sucesso!")
+                          }
+                          if (confProdControl === "Não" || confProdControl === "não") {
+                            alert("Cadastro cancelado!")
+                            prodControl = 5
+                          }
+                          if (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                            alert("Informe uma opção válida!")
+                          }
+                          break
+
+                        case 2:
+                          contNum = 0
+                          confProdControl = "sair"
+                          if (Produtos.nome[0] == null) {
+                            alert("Não há produtos cadastrados!")
+                            prodControl = "sair"
+                          } else {
+                            codProd = null
+                            while (codProd === null) {
+                              alert("Produtos: " + Produtos.nome + "\nCódigos: " + Produtos.codprod)
+                              codProd = parseInt(prompt("Informe o código do produto a ser retirado: \n0 - SAIR"))
+                            }
+                            if (codProd == 0) {
+                              alert("Processo cancelado!")
+                              prodControl = 5
+                            }
+                            if (codProd != null && codProd != "0") {
+                              for (i = 0; i <= Produtos.codprod.length; i++) {
+                                if (codProd == Produtos.codprod[i]) {
+                                  contNum++
+                                  while (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                                    confProdControl = prompt("Nome: " + Produtos.nome[i] + "\nPreço: " + Produtos.preco[i] + "\nQuantidade: " + Produtos.quant[i] + "\nCódigo do produto: " + Produtos.codprod[i] + "\nConfirmar exclusão do produto?")
+                                  }
+                                  if (confProdControl === "Sim" || confProdControl === "sim") {
+                                    Produtos.nome.splice(i, 1)
+                                    Produtos.preco.splice(i, 1)
+                                    Produtos.quant.splice(i, 1)
+                                    Produtos.codprod.splice(i, 1)
+                                    alert("Produto excluído!")
+                                  } if (confProdControl === "Não" || confProdControl === "não") {
+                                    alert("Processo cancelado!")
+                                    codProd = null
+                                  }
+                                } if (contNum == 0) {
+                                  alert("Produto não encontrado!")
+                                  codProd = null
+                                }
+                              }
+                            }
+                          }
+                          break
+
+                        case 3:
+                          codProd = null
+                          contNum = 0
+                          while (codProd === null) {
+                            codProd = parseInt(prompt("Informe o código do produto a conferir: \n0 - SAIR"))
+
+                            if (codProd == 0) {
+                              alert("Processo Cancelado!")
+                              contNum++
+                              thirdSelect = 5
+                            }
+                            for (i = 0; i < Produtos.codprod.length; i++) {
+                              if (codProd == Produtos.codprod[i]) {
+                                contNum++
+                                alert("Nome: " + Produtos.nome[i] + "\nValor: R$" + Produtos.preco[i] + "\nQuantidade em estoque: " + Produtos.quant[i])
+                                codProd = null
+                              }
+                            }
+                            if (contNum == 0) {
+                              alert("Produto não registrado!")
+                              codProd = null
+                            }
+                          }
+
+                          break
+
+                        case 4:
+                          confProdControl = "sair"
+                          quantProd = 0
+                          contNum = 0
+                          codProd = null
+                          while (codProd === null) {
+                            codProd = parseInt(prompt("Informe o código do produto que deseja adicionar: "))
+                            for (i = 0; i <= Produtos.codprod.length; i++) {
+                              if (codProd == Produtos.codprod[i]) {
+                                totalProd = 0
+                                quantProd = parseFloat(prompt("Informe a quantia que deseja adicionar: "))
+                                totalProd = Produtos.quant[i] + quantProd
+                                while (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                                  confProdControl = prompt("A quantia será de " + totalProd + "\nConfirmar?")
+                                }
+                                if (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                                  alert("Informe uma resposta válida!")
+                                }
+                                if (confProdControl === "Sim" || confProdControl === "sim") {
+                                  Produtos.quant[i] = totalProd
+                                  alert("Quantia atualizada!")
+                                }
+                                if (confProdControl === "Não" || confProdControl === "não") {
+                                  alert("Processo cancelado!")
+                                  prodControl = "sair"
+                                }
+                              }
+                            }
+
+                          }
+                          break
+
+                        case 5:
+                          confProdControl = "sair"
+                          quantProd = 0
+                          contNum = 0
+                          codProd = null
+                          while (codProd === null) {
+                            codProd = parseInt(prompt("Informe o código do produto que deseja subtrair: "))
+                            for (i = 0; i <= Produtos.codprod.length; i++) {
+                              if (codProd == Produtos.codprod[i]) {
+                                totalProd = 0
+                                quantProd = parseFloat(prompt("Informe a quantia que deseja retirar: "))
+                                totalProd = Produtos.quant[i] - quantProd
+                                while (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                                  confProdControl = prompt("A quantia será de " + totalProd + "\nConfirmar?")
+                                }
+                                if (confProdControl != "Sim" && confProdControl != "sim" && confProdControl != "Não" && confProdControl != "não") {
+                                  alert("Informe uma resposta válida!")
+                                }
+                                if (confProdControl === "Sim" || confProdControl === "sim") {
+                                  Produtos.quant[i] = totalProd
+                                  alert("Quantia atualizada!")
+                                }
+                                if (confProdControl === "Não" || confProdControl === "não") {
+                                  alert("Processo cancelado!")
+                                  prodControl = "sair"
+                                }
+                              }
+                            }
+
+                          }
+                          break
+                      }
+
+                      break
+                    case 4:
+                      quantProd = 0
+                      codProd = null
+                      while (codProd === null) {
+                        codProd = parseInt(prompt("Informe o código do produto que deseja vender: "))
+                        for (i = 0; i <= Produtos.codprod.length; i++) {
+                          if (codProd == Produtos.codprod[i]) {
+                            totalProd = 0
+                            quantProd = parseFloat(prompt("Informe a quantia que deseja vender: "))
+                            if (Produtos.quant[i] >= quantProd) {
+                              Produtos.quant[i] = Produtos.quant[i] - quantProd
+                              alert("Venda efetuada!")
+                              alert("Produtos restantes: " + Produtos.quant[i])
+                            } else {
+                              alert("Quantia indisponível!")
+                            }
+                          }
+                        }
+
+                      }
+                      break
+                  }
+                }
+              }
+            }
+          }
+        } else {
+          alert("Sem usuários cadastrados!")
+          firstSelect = 5
+        }
+      }
+
+      while (firstSelect == 2) {
+        login = prompt("Informe um Login: ")
+        senha = prompt("Informe uma senha: ")
+        confSenha = prompt("Confirme a senha: ")
+        if (confSenha === senha) {
+          Cadastro.login.push(login)
+          Cadastro.senha.push(senha)
+          alert("Conta criada com sucesso")
+          firstSelect = 5
+        } else {
+          alert("As senhas não coincidem!")
+          firstSelect = 2
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

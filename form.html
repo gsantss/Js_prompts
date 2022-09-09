@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/formulario1/form.css">
+    <title>formulario1</title>
+</head>
+<body>
+    <div>
+        <form action="/form.js">
+            <fieldset>
+                <legend>Informações do Aluno: </legend>
+                <label for="fnome"></label>
+                <input type="text" id="fnome" name="fnome" placeholder="Nome"><br><br>
+                <label for="npgrupo"></label>
+                <input type="number" id="npgrupo" name="npgrupo" placeholder="Número de Integrantes"><br><br>
+                <label for="email"></label>
+                <input type="text" id="email" name="email" placeholder="E-mail"><br><br>
+                <label for="datanasc">Data de Nascimento: </label>
+                <input type="date" id="datanasc" name="datanasc"><br><br>
+                <label for="senha">Digite uma senha para acessar: </label>
+                <input type="password" maxlength="15" placeholder="Senha">
+            </fieldset>
+      
+            <fieldset>
+                <legend>Matemática</legend>
+                <img src="/formulario1/img/png-transparent-white-and-green-number-1-number-number-1-blue-image-file-formats-text-removebg-preview.png" alt="img1" id="img1a">
+                <br><label for="fs1">3 + 3 =</label>
+                <input type="text" id="resul1" placeholder="Resultado"> <br><br>
+                <label for="fs2">10 / 3 =</label>
+                <input type="text" id="resul2" placeholder="Resultado"> <br><br>
+                <label for="fs3">5 * 2 =</label>
+                <input type="text" id="resul3" placeholder="Resultado"> <br><br>
+                <label for="fs4"> Essa tarefa foi difícil? </label>
+                <input type="range"> 
+            </fieldset>
+       
+            <fieldset>
+                <legend>Opinião quanto a utilização</legend>
+                <img src="/formulario1/img/Capturar.PNG" alt="português">
+                <p>Na frase "Eu sou bonito" o sujeito é</p>
+                <input type="radio" name="Quem" value="Brad Pitt">Brad Pitt<br>
+                <input type="radio" name="Quem" value="João da padaria">João da padaria<br>
+                <input type="radio" name="Quem" value="Você mesmo">Você mesmo<br>
+                <input type="radio" name="Quem" value="Meus Pais">Meus Pais<br>
+                <input type="radio" name="Quem" value="Eu">Eu <br>
+
+                <p>Complete a frase: "Filho de peixe, peixinho ___"</p>
+                <input type="checkbox"> é <br>
+                <input type="checkbox"> tem <br>
+                <input type="checkbox"> verde <br>
+                <input type="checkbox"> bonito <br>
+                <input type="checkbox"> maria <br>
+            </fieldset>
+       
+            <fieldset>
+                <legend>Dê uma nota para sua professora:</legend>
+                <label for="n1"> Sua professora explica bem a matéria? </label> <br><br>
+                <input type="range">
+            </fieldset>
+       
+            <fieldset>
+                <legend>Opiniões</legend>
+                <p>Digite a sua opinião sobre a disciplina:</p>
+                <textarea name="Opiniao" id="op1" cols="50" rows="10"></textarea>
+            </fieldset>
+            <br>
+            <input type="submit">
+        </form>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<body>
+    <script>
+       var x=0
+       var y=0
+       var produtos = []
+       var qtdprodutos = []
+       var valorprd = []
+       var qtdVenda = []
+        while(x!=5){
+            x=parseInt(prompt("Escolha uma opção \n 1 – Incluir Produto \n 2 – Vender Produto \n 3 – Atualizar Estoque \n 4 – Pesquisar Produto \n 5 – Sair do Sistema"));
+
+        switch(x){
+            case 1 :
+                produtos.push(prompt("Informe o nome do produto"))
+                qtdprodutos.push(prompt("Quantos desse produto estão em estoque?"))
+                valorprd.push(prompt("Qual o valor do produto?"))
+              break;
+
+                case 2 :
+                for(i=0;i<produtos.length;i++){                   
+                     alert(produtos[i] + " - " + qtdprodutos[i])
+                }
+                vdprod = prompt("Qual produto será vendido?")
+                qtdVenda = prompt("Informe a quantia de produtos:")
+
+                for(let i = 0; i<produtos.length; i++){
+                    if (vdprod === produtos[i]){
+                        y = qtdprodutos[i] - qtdVenda
+                    }
+                }
+               break;
+
+                case 3 :
+                    alert("Atualizando estoque")
+                    alert("Estoque Atualizado")
+                break;
+
+                case 4 :
+
+           }
+    }
+    </script>
+</body>
